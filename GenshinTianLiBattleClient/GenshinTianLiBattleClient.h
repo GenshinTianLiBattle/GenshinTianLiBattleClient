@@ -1,5 +1,5 @@
 #pragma once
-
+#include <QNetworkAccessManager>
 #include <QtWidgets/QWidget>
 #include "ui_GenshinTianLiBattleClient.h"
 
@@ -13,4 +13,11 @@ public:
 
 private:
     Ui::GenshinTianLiBattleClientClass ui;
+private:
+    QNetworkAccessManager* manager = nullptr;
+private:
+    QString GetVersion();
+    QString GetDownloadLink();
+public slots:
+    void UpdateSelf(QString& updata_pkg_url);
 };
