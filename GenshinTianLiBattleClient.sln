@@ -10,6 +10,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GenshinTianLiBattleClient",
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "解决方案项", "解决方案项", "{91830CFF-0B78-4DF2-9EBD-C6292E6689B0}"
 	ProjectSection(SolutionItems) = preProject
+		appVeyor.yml = appVeyor.yml
 		Readme.md = Readme.md
 	EndProjectSection
 EndProject
