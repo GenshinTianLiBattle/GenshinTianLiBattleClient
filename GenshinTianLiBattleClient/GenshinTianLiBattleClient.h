@@ -18,6 +18,7 @@ private:
 private:
     QString GetVersion();
     QString GetDownloadLink();
+    bool GetDownloadFile(QString url, QString path);
 public slots:
     void UpdateSelf(QString& updata_pkg_url);
 };
