@@ -4,13 +4,16 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 17.4.33122.133
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GenshinTianLiBattleClient", "GenshinTianLiBattleClient\GenshinTianLiBattleClient.vcxproj", "{1A75BDC7-E684-4B78-A9FD-8C77A3106000}"
+	ProjectSection(ProjectDependencies) = postProject
+		{990B4D11-30EC-43E3-AD9D-2169F9784F80} = {990B4D11-30EC-43E3-AD9D-2169F9784F80}
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "解决方案项", "解决方案项", "{91830CFF-0B78-4DF2-9EBD-C6292E6689B0}"
 	ProjectSection(SolutionItems) = preProject
 		Readme.md = Readme.md
 	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GenshinTianLiBattleClient.Core", "GenshinTianLiBattleClient.Core\GenshinTianLiBattleClient.Core\GenshinTianLiBattleClient.Core\GenshinTianLiBattleClient.Core.vcxproj", "{990B4D11-30EC-43E3-AD9D-2169F9784F80}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GenshinTianLiBattleClient.Core", "GenshinTianLiBattleClient.Core\GenshinTianLiBattleClient.Core.vcxproj", "{990B4D11-30EC-43E3-AD9D-2169F9784F80}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
