@@ -102,7 +102,6 @@ QByteArray GenshinTianLiBattleClient::GetDownloadFile(QString url, QString path)
 bool GenshinTianLiBattleClient::GetDownloadFile(QString url, QString path)
 {
 	// curl
-	// curl
 	QProcess curl;
 	curl.start("curl", QStringList() << "-L" << url << "-o" << path);
 	curl.waitForFinished();
@@ -135,42 +134,10 @@ GenshinTianLiBattleClient::GenshinTianLiBattleClient(QWidget *parent)
 	int new_version_patch = check_version.split(".")[2].toInt();
 	if(new_version_major > tl::bettle::version::version_major || new_version_minor > tl::bettle::version::version_minor || new_version_patch > tl::bettle::version::version_patch)
 	{
-		
-	label->setText(check_version);
-	QString download_link = GetDownloadLink();
-	label->setText(download_link);
-	UpdateSelf(download_link);
-		//label->setText("new version");
-		//QString download_link = GetDownloadLink();
-		//QNetworkRequest request;
-		//request.setAttribute(QNetworkRequest::FollowRedirectsAttribute, true);
-		//request.setSslConfiguration(QSslConfiguration::defaultConfiguration());
-		//request.setUrl(QUrl(download_link));
-		//
-		//QNetworkReply* reply = manager->get(request);
-		//QEventLoop eventLoop;
-		//connect(reply, &QNetworkReply::finished, &eventLoop, &QEventLoop::quit);
-		//eventLoop.exec(QEventLoop::ExcludeUserInputEvents);
-		//
-		//QByteArray replyData = reply->readAll();
-		//reply->deleteLater();
-		//reply = nullptr;
-		//
-		//QFile file("GenshinTianLiBattleClient.zip");
-		//file.open(QIODevice::WriteOnly);
-		//file.write(replyData);
-		//file.close();
-		//
-		//QDir dir;
-		//dir.mkdir("GenshinTianLiBattleClient");
-		//QZipReader zip("GenshinTianLiBattleClient.zip");
-		//zip.extractAll("GenshinTianLiBattleClient");
-		//zip.close();
-		//
-		//QFile::remove("GenshinTianLiBattleClient.zip");
-		//
-		//QProcess::startDetached("GenshinTianLiBattleClient/GenshinTianLiBattleClient.exe");
-		//QApplication::exit();
+		label->setText(check_version);
+		QString download_link = GetDownloadLink();
+		label->setText(download_link);
+		UpdateSelf(download_link);
 	}
 	else
 	{
@@ -196,45 +163,21 @@ void GenshinTianLiBattleClient::UpdateSelf(QString &updata_pkg_url)
 	label->setText("Downloading...");
 	dialog->show();
 	
-	// 1 下载
-	//QNetworkRequest request;
-	//request.setAttribute(QNetworkRequest::FollowRedirectsAttribute, true);
-	//// 在静态库版本中禁用ssl
-
-	//request.setUrl(QUrl(updata_pkg_url));
-	//QNetworkReply* reply = manager->get(request);
-	//QEventLoop eventLoop;
-	//connect(reply, &QNetworkReply::finished, &eventLoop, &QEventLoop::quit);
-	//eventLoop.exec(QEventLoop::ExcludeUserInputEvents);
-	//if (reply->error() != QNetworkReply::NoError)
-	//{
-	//	qDebug() <<"Download Error" << reply->errorString();
-	//}
-	//QByteArray replyData = reply->readAll();
-	//reply->deleteLater();
-	//reply = nullptr;
-	//label->setText("Downloaded" + QString::number(replyData.size()));
-	
 	// 下载改用curl
 	GetDownloadFile(updata_pkg_url, "GenshinTianLiBattleClient_update.zip");
 	
-	//// 2 解压
-	//QDir dir;
-	//dir.mkpath("update");
-	//QFile file("update/update.zip");
-	//file.open(QIODevice::WriteOnly);
-	//file.write(replyData);
-	//file.close();
-	//label->setText("Unziping...");
-
 	qDebug() << QDir::currentPath();
+
+	QString release_path = "new_version/";
+	QString release_exe = QDir::currentPath() + "/" + release_path + "GenshinTianLiBattleClient.exe";
 
 	QZipReader reader("GenshinTianLiBattleClient_update.zip");
 	auto list = reader.fileInfoList();
 	if (list.isEmpty())
 	{
 		label->setText("list.isEmpty()");
-		qDebug() << "list.isEmpty()";
+		qDebug() << "Updata Faile";
+		return;
 	}
 	else
 	{
@@ -247,34 +190,29 @@ void GenshinTianLiBattleClient::UpdateSelf(QString &updata_pkg_url)
 		label->setText("list " + s);
 		qDebug() << "list " + s;
 
+		QDir dir;
+		if (!dir.exists(release_path))
+		{
+			dir.mkpath(release_path);
+		}
+		reader.extractAll(release_path);
+		qDebug() << "release_exe : " << release_exe;
+		// release_exe 是否存在
+		if (QFile::exists(release_exe))
+		{
+			label->setText("release_exe exists");
+			qDebug() << "release_exe exists";
+			QFile::rename(release_exe, release_exe + ".new");
+
+		}
+		else
+		{
+			label->setText("release_exe not exists");
+			qDebug() << "release_exe not exists";
+		}
 	}
-
-	QString release_path = "new_version/";
-	QDir dir;
-	if (!dir.exists(release_path))
-	{
-		dir.mkpath(release_path);
-	}
-
-
-	reader.extractAll(release_path);
-	QString release_exe = QDir::currentPath() +"/"+ release_path+ "GenshinTianLiBattleClient.exe";
-	qDebug() <<"release_exe : "<< release_exe;
-	// release_exe 是否存在
-	if( QFile::exists(release_exe))
-	{
-		label->setText("release_exe exists");
-		qDebug() << "release_exe exists";
-		QFile::rename(release_exe, release_exe+".new");
-
-	}
-	else
-	{
-		label->setText("release_exe not exists");
-		qDebug() << "release_exe not exists";
-	}
-
 	reader.close();
+	QFile::remove("GenshinTianLiBattleClient_update.zip");
 
 	// 将自身重命名为old
 	QString app_exe = "GenshinTianLiBattleClient.exe";
@@ -290,7 +228,15 @@ void GenshinTianLiBattleClient::UpdateSelf(QString &updata_pkg_url)
 	
 	
 	// 移除 old
+	QFile::remove(release_exe + ".new");
+	if (release_path.isEmpty())
+	{
+		QDir dir;
+		dir.rmdir(release_path);
+	}
 	QFile::remove(old_exe_path);
+	
+	
 
 	// 替换自身
 	QProcess::startDetached(app_exe_path);
@@ -299,41 +245,4 @@ void GenshinTianLiBattleClient::UpdateSelf(QString &updata_pkg_url)
 
 	exit(1);
 	
-	/*
-	QNetworkRequest request;
-	request.setAttribute(QNetworkRequest::FollowRedirectsAttribute, true);
-	request.setUrl(QUrl(updata_pkg_url));
-	QNetworkReply* reply = manager->get(request);
-	connect(reply, &QNetworkReply::finished, [=]() {
-		if (reply->error() == QNetworkReply::NoError) {
-			QByteArray bytes = reply->readAll();
-			// 写入到文件
-			QFile file("update.zip");
-			file.open(QIODevice::WriteOnly);
-			file.write(bytes);
-			file.close();
-			qDebug() << file.fileName();
-			// 输出当前目录
-			qDebug() << QDir::currentPath();
-
-			
-			// 2. 解压更新包
-			QZipReader reader("update.zip");
-			reader.extractAll(QDir::currentPath());
-			
-			// 3. 重命名自己
-			QFile::rename(QDir::currentPath()+"/GenshinTianLiBattleClient.exe", "GenshinTianLiBattleClient_new.exe");
-
-			// 4. 拷贝新版本到这里并重命名
-			//QFile::copy(QDir::currentPath() + "/GenshinTianLiBattleClient_new.exe", QDir::currentPath() + "/GenshinTianLiBattleClient.exe");
-			
-			
-			
-
-		}
-		else {
-			qDebug() << reply->errorString();
-		}
-		});
-	*/
 }
