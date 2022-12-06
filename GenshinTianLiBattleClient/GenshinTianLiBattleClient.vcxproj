@@ -158,6 +158,14 @@
   <ItemGroup>
     <ClInclude Include="def\api\Api.h" />
     <ClInclude Include="def\version\Version.h" />
+    <ClInclude Include="resource.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="GenshinTianLiBattleClient.rc" />
+    <ResourceCompile Include="GenshinTianLiBattleClientIcon.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="resource\icon\Icon.ico" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

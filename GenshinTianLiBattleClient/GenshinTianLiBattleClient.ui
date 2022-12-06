@@ -1,10 +1,8 @@
-<UI version="4.0" >
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
  <class>GenshinTianLiBattleClientClass</class>
- <widget class="QWidget" name="GenshinTianLiBattleClientClass" >
-  <property name="objectName" >
-   <string notr="true">GenshinTianLiBattleClientClass</string>
-  </property>
-  <property name="geometry" >
+ <widget class="QWidget" name="GenshinTianLiBattleClientClass">
+  <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
@@ -12,14 +10,17 @@
     <height>400</height>
    </rect>
   </property>
-  <property name="windowTitle" >
+  <property name="windowTitle">
    <string>GenshinTianLiBattleClient</string>
-  </property>$centralwidget$
+  </property>
+  <property name="windowIcon">
+   <iconset resource="GenshinTianLiBattleClient.qrc">
+    <normaloff>:/GenshinTianLiBattleClient/resource/icon/Icon.png</normaloff>:/GenshinTianLiBattleClient/resource/icon/Icon.png</iconset>
+  </property>
  </widget>
- <layoutDefault spacing="6" margin="11" />
- <pixmapfunction></pixmapfunction>
+ <layoutdefault spacing="6" margin="11"/>
  <resources>
-   <include location="GenshinTianLiBattleClient.qrc"/>
+  <include location="GenshinTianLiBattleClient.qrc"/>
  </resources>
  <connections/>
-</UI>
+</ui>

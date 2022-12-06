@@ -1,4 +1,6 @@
 <RCC>
-    <qresource prefix="GenshinTianLiBattleClient">
+    <qresource prefix="/GenshinTianLiBattleClient">
+        <file>resource/icon/Icon.png</file>
+        <file>resource/icon/Icon.ico</file>
     </qresource>
 </RCC>
