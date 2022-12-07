@@ -3,6 +3,8 @@
 #include <QtWidgets/QWidget>
 #include "ui_GenshinTianLiBattleClient.h"
 
+//#define USE_QT_NET
+
 class GenshinTianLiBattleClient : public QWidget
 {
     Q_OBJECT
@@ -14,7 +16,9 @@ public:
 private:
     Ui::GenshinTianLiBattleClientClass ui;
 private:
+#ifdef USE_QT_NET
     QNetworkAccessManager* manager = nullptr;
+#endif 
 private:
     QString GetVersion();
     QString GetDownloadLink();

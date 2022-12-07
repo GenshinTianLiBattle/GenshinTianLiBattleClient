@@ -64,7 +64,7 @@
     <QtBuildConfig>release</QtBuildConfig>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelStatic|x64'" Label="QtSettings">
-    <QtInstall>5.14.2_msvc2017_64_static</QtInstall>
+    <QtInstall>static_5.15.7</QtInstall>
     <QtModules>core;network;gui;widgets;gui-private</QtModules>
     <QtBuildConfig>release</QtBuildConfig>
   </PropertyGroup>
