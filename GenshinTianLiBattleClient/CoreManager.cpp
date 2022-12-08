@@ -1,5 +1,6 @@
 #include "CoreManager.h"
 
+#define GenshinTianLiBattleCore_Dll
 #ifdef GenshinTianLiBattleCore_Dll
 #include "../GenshinTianLiBattleClient.Core/TianLiBattle.Core.h"
 #pragma comment(lib, "GenshinTianLiBattleClient.Core.lib")
