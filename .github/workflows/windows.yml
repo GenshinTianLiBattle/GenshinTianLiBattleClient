@@ -50,12 +50,15 @@ jobs:
       run: msbuild /m /p:Configuration=${{env.BUILD_CONFIGURATION}} ${{env.SOLUTION_FILE_PATH}}
     #- name: Pkg
     #   run: 
-    - name: Upload Release Asset
-      uses: actions/upload-release-asset@v1
+    - name: Zip Release
+      # You may pin to the exact commit or the version.
+      # uses: TheDoctor0/zip-release@09336613be18a8208dfa66bd57efafd9e2685657
+      uses: TheDoctor0/zip-release@0.6.2
       with:
-        repo_token: ${{ secrets.GITHUB_TOKEN }}
-        tag: 0.1.0
-        release_name: GenshinTianLiBattleClient
-        # The name of the file you want to upload
-        file: .\x64\Release\GenshinTianLiBattleClient.exe
-    
+        # Filename for archive
+        filename: release.zip
+        # Base path for archive files
+        path: .\x64\Release\
+        # Working directory before zipping
+        directory: .\x64\Release\
+        exclusions: '*.exe'
