@@ -28,9 +28,13 @@ jobs:
         .\unzip.bat
         .\addpath.bat 
         cd ..
+        dir 
+        tree
         copy deps_qt/QtMsBuild.7z /
         copy deps_qt/7z.exe /
         copy deps_qt/7z.dll /
+        dir 
+        tree
         7z.exe x QtMsBuild.7z
         
     - name: Add MSBuild to PATH
