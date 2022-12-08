@@ -19,4 +19,5 @@ private:
 
 public slots:
     void UpdateSelf(QString& updata_pkg_url);
+    void show_frame(QImage img);
 };

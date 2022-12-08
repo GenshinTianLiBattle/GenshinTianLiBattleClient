@@ -1,5 +1,6 @@
 #pragma once
 #include <QObject>
+#include <QImage>
 
 namespace tl::battle::core {
 	class TianLiBattleCore;
@@ -25,4 +26,6 @@ public slots:
 	void OnTick();
 	void set_genshin_handle(HWND handle);
 	void checkVersionServer();
+signals:
+	void next_frame(QImage img);
 };
