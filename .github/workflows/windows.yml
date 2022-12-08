@@ -10,7 +10,8 @@ env:
   # Path to the solution file relative to the root of the project.
   SOLUTION_FILE_PATH: .
   BUILD_CONFIGURATION: Release
-  
+  Qt_Dir_Static: ${{env.GITHUB_WORKSPACE}}\..\deps_qt\5.15.7\bin\
+
 
 permissions:
   contents: read
@@ -32,8 +33,7 @@ jobs:
         copy deps_qt/7z.exe GenshinTianLiBattleClient/
         copy deps_qt/7z.dll GenshinTianLiBattleClient/
         cd GenshinTianLiBattleClient
-        dir 
-        tree
+        echo ${{Qt_Dir_Static}}
         7z.exe x QtMsBuild.7z
         
     - name: Add MSBuild to PATH
