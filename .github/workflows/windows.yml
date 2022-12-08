@@ -23,6 +23,12 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     
+    - name: Clone Submodules
+      run: |
+        # GENSHINTIANLIBATTLECORE_PRIVATE 为私有令牌，用于访问私有仓库，需要在仓库的设置中添加
+        git config --global url."https://github.com/GenshinTianLiBattle/GenshinTianLiBattleCore.git".insteadOf "https:// GENSHINTIANLIBATTLECORE_PRIVATE @github.com/GenshinTianLiBattle/GenshinTianLiBattleCore.git"
+        git submodule update --init --recursive
+
     - name: Add Opencv
       run: |
         # 下载 https://github.com/GengGode/OpencvStaticLib/releases/download/4.6.0/Opencv.zip
