@@ -58,7 +58,7 @@ jobs:
         # Filename for archive
         filename: release.zip
         # Base path for archive files
-        path: .\x64\Release\
+        path: x64\Release\
         # Working directory before zipping
-        directory: .\x64\Release\
+        directory: x64\Release\
         exclusions: '*.exe'
