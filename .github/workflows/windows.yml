@@ -10,15 +10,15 @@ env:
   # Path to the solution file relative to the root of the project.
   SOLUTION_FILE_PATH: .
   BUILD_CONFIGURATION: Release
-  QT_DIR_BIN : D:/a/GenshinTianLiBattleClient/GenshinTianLiBattleClient/deps_qt/5.15.7/bin/
-
-
+  
 permissions:
   contents: read
 
 jobs:
   build:
     runs-on: windows-latest
+    env:
+      Qt_Dir_Static : D:/a/GenshinTianLiBattleClient/GenshinTianLiBattleClient/deps_qt/5.15.7/bin/
 
     steps:
     - uses: actions/checkout@v3
@@ -34,8 +34,7 @@ jobs:
         copy deps_qt/7z.dll GenshinTianLiBattleClient/
         cd GenshinTianLiBattleClient
         7z.exe x QtMsBuild.7z
-        set Qt_Dir_Static=D:\a\GenshinTianLiBattleClient\GenshinTianLiBattleClient\deps_qt\5.15.7\bin\
-        echo $env:Qt_Dir_Static
+        echo asd ${Qt_Dir_Static}
         
     - name: Add MSBuild to PATH
       uses: microsoft/setup-msbuild@v1.0.2
