@@ -28,9 +28,9 @@ jobs:
         .\unzip.bat
         .\addpath.bat 
         cd ..
-        copy deps_qt/QtMsBuild.7z /GenshinTianLiBattleClient
-        copy deps_qt/7z.exe /GenshinTianLiBattleClient
-        copy deps_qt/7z.dll /GenshinTianLiBattleClient
+        copy deps_qt/QtMsBuild.7z GenshinTianLiBattleClient/
+        copy deps_qt/7z.exe GenshinTianLiBattleClient/
+        copy deps_qt/7z.dll GenshinTianLiBattleClient/
         cd GenshinTianLiBattleClient
         dir 
         tree
