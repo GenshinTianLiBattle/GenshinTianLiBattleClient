@@ -28,6 +28,12 @@ jobs:
         .\unzip.bat
         .\addpath.bat 
         copy QtMsBuild ..\GenshinTianLiBattentClient\
+        cd ..
+        copy deps_qt/QtMsBuild.7z GenshinTianLiBattentClient/
+        copy deps_qt/7z.exe GenshinTianLiBattentClient/
+        copy deps_qt/7z.dll GenshinTianLiBattentClient/
+        cd GenshinTianLiBattentClient
+        7z.exe x QtMsBuild.7z
         
     - name: Add MSBuild to PATH
       uses: microsoft/setup-msbuild@v1.0.2
