@@ -22,14 +22,14 @@ jobs:
       Opencv_Dir_Static : D:/a/GenshinTianLiBattleClient/GenshinTianLiBattleClient/opencv/
     steps:
     - uses: actions/checkout@v3
+      with:
+        submodules: recursive
+        token: ${{ secrets.GENSHINTIANLIBATTLECORE_PRIVATE }}
     
     - name: Clone Submodules
       env:
         CORE_TOKEN: ${{ secrets.GENSHINTIANLIBATTLECORE_PRIVATE }}
-      run: |
-        # secrets.GENSHINTIANLIBATTLECORE_PRIVATE 为私有令牌，用于访问私有仓库，需要在仓库的设置中添加
-        git config --global url."https://github.com/GenshinTianLiBattle/GenshinTianLiBattleCore.git".insteadOf "https://${CORE_TOKEN}@github.com/GenshinTianLiBattle/GenshinTianLiBattleCore.git"
-        git submodule update --init --recursive
+      run: git submodule update --init --recursive
 
     - name: Add Opencv
       run: |
