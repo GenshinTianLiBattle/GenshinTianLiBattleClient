@@ -1,9 +1,8 @@
 #pragma once
-#include <QNetworkAccessManager>
 #include <QtWidgets/QWidget>
 #include "ui_GenshinTianLiBattleClient.h"
 
-//#define USE_QT_NET
+#include "CoreManager.h"
 
 class GenshinTianLiBattleClient : public QWidget
 {
@@ -16,13 +15,8 @@ public:
 private:
     Ui::GenshinTianLiBattleClientClass ui;
 private:
-#ifdef USE_QT_NET
-    QNetworkAccessManager* manager = nullptr;
-#endif 
-private:
-    QString GetVersion();
-    QString GetDownloadLink();
-    bool GetDownloadFile(QString url, QString path);
+	CoreManager core_manager;
+
 public slots:
     void UpdateSelf(QString& updata_pkg_url);
 };

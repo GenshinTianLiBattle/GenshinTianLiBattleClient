@@ -1,7 +1,7 @@
 #pragma once
 namespace tl
 {
-	namespace bettle
+	namespace battle
 	{
 		namespace version
 		{

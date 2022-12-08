@@ -19,13 +19,15 @@ jobs:
     runs-on: windows-latest
     env:
       Qt_Dir_Static : D:/a/GenshinTianLiBattleClient/GenshinTianLiBattleClient/deps_qt/5.15.7/
-
+      Opencv_Dir_Static : D:/a/GenshinTianLiBattleClient/GenshinTianLiBattleClient/opencv/
     steps:
     - uses: actions/checkout@v3
     
     - name: Add Opencv
       run: |
-        # 下载https://github.com/GengGode/OpencvStaticLib/releases/download/4.6.0/Opencv.zip
+        # 下载 https://github.com/GengGode/OpencvStaticLib/releases/download/4.6.0/Opencv.zip
+        curl -L https://github.com/GengGode/OpencvStaticLib/releases/download/4.6.0/Opencv.zip -o Opencv.zip
+        7z x Opencv.zip -oD:\a\GenshinTianLiBattleClient\GenshinTianLiBattleClient\opencv
         
     - name: Add Deps_Qt
       run: |

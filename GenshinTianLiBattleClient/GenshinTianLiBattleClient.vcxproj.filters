@@ -3,9 +3,11 @@
   <ItemGroup>
     <ClCompile Include="GenshinTianLiBattleClient.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="CoreManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="GenshinTianLiBattleClient.h" />
+    <QtMoc Include="CoreManager.h" />
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="GenshinTianLiBattleClient.ui" />
@@ -22,6 +24,9 @@
     </Filter>
     <Filter Include="资源">
       <UniqueIdentifier>{8880f11b-568c-4693-a080-d6e9bb13fe9a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="3rdpart">
+      <UniqueIdentifier>{bd40ca6c-9cf1-410e-83c9-c8b04d895985}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

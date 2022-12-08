@@ -2,7 +2,7 @@
 
 namespace tl
 {
-	namespace bettle
+	namespace battle
 	{
 		namespace api
 		{
