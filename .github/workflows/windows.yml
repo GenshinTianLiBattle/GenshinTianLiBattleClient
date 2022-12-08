@@ -29,7 +29,7 @@ jobs:
         .\unzip.bat
         .\addpath.bat 
         dir
-        dir /openssl
+        dir ./openssl
         Copy-Item -Path "deps_qt\openssl" -Destination "C:\" -Recurse
         cd ..
         copy deps_qt/QtMsBuild.7z GenshinTianLiBattleClient/
