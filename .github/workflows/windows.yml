@@ -57,5 +57,5 @@ jobs:
         tag: 0.1.0
         release_name: GenshinTianLiBattleClient
         # The name of the file you want to upload
-        file: GenshinTianLiBattleClient.exe
+        file: .\x64\Release\GenshinTianLiBattleClient.exe
     
