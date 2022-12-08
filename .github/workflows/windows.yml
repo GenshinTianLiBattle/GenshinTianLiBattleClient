@@ -60,15 +60,15 @@ jobs:
     
     - name: Copy Pkg
       run: |
-        mkdir  ${{env.GITHUB_WORKSPACE}}/artifact
-        copy  ${{env.GITHUB_WORKSPACE}}/x64/${{env.BUILD_CONFIGURATION}}/*.exe  ${{env.GITHUB_WORKSPACE}}/artifact
-        cd ${{env.GITHUB_WORKSPACE}}/artifact
+        mkdir  D:\a\GenshinTianLiBattleClient\GenshinTianLiBattleClient/artifact
+        copy  D:\a\GenshinTianLiBattleClient\GenshinTianLiBattleClient/x64/${{env.BUILD_CONFIGURATION}}/*.exe  D:\a\GenshinTianLiBattleClient\GenshinTianLiBattleClient/artifact
+        cd D:\a\GenshinTianLiBattleClient\GenshinTianLiBattleClient/artifact
         dir
         
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v3.1.1
       with:
         name: GenshinTianLiBattleClient
-        path: ${{env.GITHUB_WORKSPACE}}/artifact/GenshinTianLiBattleClient.exe
+        path: D:\a\GenshinTianLiBattleClient\GenshinTianLiBattleClient/artifact/GenshinTianLiBattleClient.exe
         if-no-files-found: 'warn'
         
