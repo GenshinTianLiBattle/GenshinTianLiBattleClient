@@ -24,9 +24,11 @@ jobs:
     - uses: actions/checkout@v3
     
     - name: Clone Submodules
+      env:
+        CORE_TOKEN: ${{ secrets.GENSHINTIANLIBATTLECORE_PRIVATE }}
       run: |
-        # GENSHINTIANLIBATTLECORE_PRIVATE 为私有令牌，用于访问私有仓库，需要在仓库的设置中添加
-        git config --global url."https://github.com/GenshinTianLiBattle/GenshinTianLiBattleCore.git".insteadOf "https:// GENSHINTIANLIBATTLECORE_PRIVATE @github.com/GenshinTianLiBattle/GenshinTianLiBattleCore.git"
+        # secrets.GENSHINTIANLIBATTLECORE_PRIVATE 为私有令牌，用于访问私有仓库，需要在仓库的设置中添加
+        git config --global url."https://github.com/GenshinTianLiBattle/GenshinTianLiBattleCore.git".insteadOf "https://${CORE_TOKEN}@github.com/GenshinTianLiBattle/GenshinTianLiBattleCore.git"
         git submodule update --init --recursive
 
     - name: Add Opencv
@@ -61,33 +63,3 @@ jobs:
       # Add additional options to the MSBuild command line here (like platform or verbosity level).
       # See https://docs.microsoft.com/visualstudio/msbuild/msbuild-command-line-reference
       run: msbuild /m /p:Configuration=${{env.BUILD_CONFIGURATION}} ${{env.SOLUTION_FILE_PATH}}
-
-    # 打包到release.zip
-    - name:  Zip Release
-      # You may pin to the exact commit or the version.
-      # uses: TheDoctor0/zip-release@09336613be18a8208dfa66bd57efafd9e2685657
-      uses: TheDoctor0/zip-release@0.6.2
-      working-directory: ${{env.GITHUB_WORKSPACE}}
-      with:
-        # Filename for archive
-        filename: release.zip
-        # Base path for archive files
-        path: ../../x64\Release\
-        # Working directory before zipping
-        directory: ../../x64\Release\
-        exclusions: '*.exe'
-
-    #- name: Pkg
-    #   run: 
-    # - name: Zip Release
-    #   # You may pin to the exact commit or the version.
-    #   # uses: TheDoctor0/zip-release@09336613be18a8208dfa66bd57efafd9e2685657
-    #   uses: TheDoctor0/zip-release@0.6.2
-    #   with:
-    #     # Filename for archive
-    #     filename: release.zip
-    #     # Base path for archive files
-    #     path: ../../x64\Release\
-    #     # Working directory before zipping
-    #     directory: ../../x64\Release\
-    #     exclusions: '*.exe'
