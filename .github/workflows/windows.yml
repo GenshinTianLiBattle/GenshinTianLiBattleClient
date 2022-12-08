@@ -10,6 +10,7 @@ env:
   # Path to the solution file relative to the root of the project.
   SOLUTION_FILE_PATH: .
   BUILD_CONFIGURATION: Release
+  
 
 permissions:
   contents: read
@@ -20,21 +21,15 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - name: Get Deps_Qt
-      run: git clone http://github.com/GenshinTianLiBattle/deps_qt.git
-    - name: Add Qt Libs
+    - name: Add Deps_Qt
       run: |
-        dir
+        git clone http://github.com/GenshinTianLiBattle/deps_qt.git
         cd deps_qt
-        tree 
         .\unzip.bat
         .\addpath.bat 
+        
     - name: Add MSBuild to PATH
       uses: microsoft/setup-msbuild@v1.0.2
-
-    - name: Restore NuGet packages
-      working-directory: ${{env.GITHUB_WORKSPACE}}
-      run: nuget restore ${{env.SOLUTION_FILE_PATH}}
 
     - name: Build
       working-directory: ${{env.GITHUB_WORKSPACE}}
