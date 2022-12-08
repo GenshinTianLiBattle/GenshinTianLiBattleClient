@@ -9,6 +9,8 @@ using namespace tl::battle;
 #include <QTimer>
 #include <qDebug>
 
+#include <opencv2/opencv.hpp>
+
 CoreManager::CoreManager(QObject *parent)
 	: QObject(parent)
 {
@@ -57,10 +59,10 @@ void CoreManager::OnTick()
 	}
 
 	RECT rect;
-	GetWindowRect(window_handle, &rect);
+	GetWindowRect(genshin_handle, &rect);
 	int width = rect.right - rect.left;
 	int height = rect.bottom - rect.top;
-	HDC hWindowDC = GetDC(window_handle);
+	HDC hWindowDC = GetDC(genshin_handle);
 	HDC hCaptureDC = CreateCompatibleDC(hWindowDC);
 	HBITMAP hCaptureBitmap = CreateCompatibleBitmap(hWindowDC, width, height);
 	SelectObject(hCaptureDC, hCaptureBitmap);
@@ -72,7 +74,7 @@ void CoreManager::OnTick()
 	GetBitmapBits(hCaptureBitmap, bmp.bmWidthBytes * bmp.bmHeight, mat.data);
 	DeleteObject(hCaptureBitmap);
 	DeleteDC(hCaptureDC);
-	ReleaseDC(window_handle, hWindowDC);
+	ReleaseDC(genshin_handle, hWindowDC);
 
 }
 

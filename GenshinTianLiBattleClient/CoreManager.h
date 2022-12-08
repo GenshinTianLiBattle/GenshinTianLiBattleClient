@@ -16,7 +16,7 @@ public:
 	~CoreManager();
 	
 private:
-	HWND genshin_handle;
+	HWND genshin_handle = 0;
 private:
 	QTimer* tick_timer;
 private:
