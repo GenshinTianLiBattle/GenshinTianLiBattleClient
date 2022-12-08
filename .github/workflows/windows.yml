@@ -27,7 +27,6 @@ jobs:
         cd deps_qt
         .\unzip.bat
         .\addpath.bat 
-        copy QtMsBuild ..\GenshinTianLiBattentClient\
         cd ..
         copy deps_qt/QtMsBuild.7z GenshinTianLiBattentClient/
         copy deps_qt/7z.exe GenshinTianLiBattentClient/
