@@ -23,7 +23,7 @@ jobs:
     - name: Get Deps_Qt
       run: git clone http://github.com/GenshinTianLiBattle/deps_qt.git
     - name: Add Qt Libs
-      run: dir && tree && .\deps_qt\unzip.bat && .\deps_qt\addpath.bat 
+      run: dir && tree && call .\deps_qt\unzip.bat && .\deps_qt\addpath.bat 
     - name: Add MSBuild to PATH
       uses: microsoft/setup-msbuild@v1.0.2
 
