@@ -10,7 +10,7 @@ env:
   # Path to the solution file relative to the root of the project.
   SOLUTION_FILE_PATH: .
   BUILD_CONFIGURATION: Release
-  Qt_Dir_Static: ${{env.GITHUB_WORKSPACE}}\..\deps_qt\5.15.7\bin\
+  Qt_Dir_Static: D:\a\GenshinTianLiBattleClient\GenshinTianLiBattleClient\deps_qt\5.15.7\bin\
 
 
 permissions:
