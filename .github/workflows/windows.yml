@@ -33,7 +33,7 @@ jobs:
         copy deps_qt/7z.exe GenshinTianLiBattleClient/
         copy deps_qt/7z.dll GenshinTianLiBattleClient/
         cd GenshinTianLiBattleClient
-        echo ${{Qt_Dir_Static}}
+        echo ${{QT_DIR_BIN}}
         7z.exe x QtMsBuild.7z
     - name: Add MSBuild to PATH
       uses: microsoft/setup-msbuild@v1.0.2
