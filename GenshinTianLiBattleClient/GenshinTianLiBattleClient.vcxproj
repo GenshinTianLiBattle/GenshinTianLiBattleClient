@@ -49,7 +49,7 @@
     <Import Project="$(QtMsBuild)\qt_defaults.props" />
   </ImportGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="QtSettings">
-    <QtInstall>5.14.2_msvc2017_64_static</QtInstall>
+    <QtInstall>5.14.2_msvc2017_64</QtInstall>
     <QtModules>core;network;gui;widgets;gui-private</QtModules>
     <QtBuildConfig>debug</QtBuildConfig>
   </PropertyGroup>
@@ -224,7 +224,6 @@
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="CoreManager.h" />
-    <ClInclude Include="def\api\Api.h" />
     <ClInclude Include="def\version\Version.h" />
     <ClInclude Include="resource.h" />
   </ItemGroup>

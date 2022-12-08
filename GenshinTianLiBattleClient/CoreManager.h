@@ -24,4 +24,5 @@ private:
 public slots:
 	void OnTick();
 	void set_genshin_handle(HWND handle);
+	void checkVersionServer();
 };

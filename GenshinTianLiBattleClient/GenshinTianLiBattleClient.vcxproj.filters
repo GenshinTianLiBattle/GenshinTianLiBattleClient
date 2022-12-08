@@ -16,9 +16,6 @@
     <Filter Include="def">
       <UniqueIdentifier>{01a45dd2-9092-4744-9cd7-2f489edbb38d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="def\api">
-      <UniqueIdentifier>{f3f8979e-20eb-4b9c-97df-15f6ae17afab}</UniqueIdentifier>
-    </Filter>
     <Filter Include="def\version">
       <UniqueIdentifier>{fe871236-8e15-42f2-8bba-0d0417c131d5}</UniqueIdentifier>
     </Filter>
@@ -30,9 +27,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="def\api\Api.h">
-      <Filter>def\api</Filter>
-    </ClInclude>
     <ClInclude Include="def\version\Version.h">
       <Filter>def\version</Filter>
     </ClInclude>

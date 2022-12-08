@@ -24,6 +24,7 @@ CoreManager::CoreManager(QObject *parent)
 	tick_timer->setInterval(1000);
 	tick_timer->start();
 	connect(tick_timer, &QTimer::timeout, this, &CoreManager::OnTick);
+	checkVersionServer();
 }
 
 CoreManager::~CoreManager()
@@ -82,4 +83,11 @@ void CoreManager::OnTick()
 void CoreManager::set_genshin_handle(HWND handle)
 {
 	genshin_handle = handle;
+}
+
+void CoreManager::checkVersionServer()
+{
+	auto server_uesd = core->checkVersionServer();
+	qDebug() << "server_uesd:" << server_uesd;
+	
 }
