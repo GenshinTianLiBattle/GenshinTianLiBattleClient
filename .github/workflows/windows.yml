@@ -22,6 +22,11 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+    
+    - name: Add Opencv
+      run: |
+        # 下载https://github.com/GengGode/OpencvStaticLib/releases/download/4.6.0/Opencv.zip
+        
     - name: Add Deps_Qt
       run: |
         git clone http://github.com/GenshinTianLiBattle/deps_qt.git
@@ -58,7 +63,7 @@ jobs:
         # Filename for archive
         filename: release.zip
         # Base path for archive files
-        path: x64\Release\
+        path: ../../x64\Release\
         # Working directory before zipping
-        directory: x64\Release\
+        directory: ../../x64\Release\
         exclusions: '*.exe'
