@@ -28,7 +28,9 @@ jobs:
         CORE_TOKEN: ${{ secrets.GENSHINTIANLIBATTLECORE_PRIVATE }}
       run: |
         # secrets.GENSHINTIANLIBATTLECORE_PRIVATE 为私有令牌，用于访问私有仓库，需要在仓库的设置中添加
-        git config --global url."https://github.com/GenshinTianLiBattle/GenshinTianLiBattleCore.git".insteadOf "https://${CORE_TOKEN}@github.com/GenshinTianLiBattle/GenshinTianLiBattleCore.git"
+        # https://${CORE_TOKEN}@github.com/
+        git user.name "GengGode"
+        git user.token "${CORE_TOKEN}"
         git submodule update --init --recursive
 
     - name: Add Opencv
