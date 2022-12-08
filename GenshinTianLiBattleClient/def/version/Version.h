@@ -1,10 +1,8 @@
 #pragma once
-namespace tl
+namespace tl::battle::client
 {
-	namespace battle
+	namespace version
 	{
-		namespace version
-		{
 #ifdef _DEBUG
 			const char* version = "0.0.0";
 			int version_major = 0;
@@ -17,6 +15,5 @@ namespace tl
 			int version_patch = 0;
 #endif // _DEBUG
 
-		}
 	}
 }

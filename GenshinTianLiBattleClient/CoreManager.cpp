@@ -26,14 +26,6 @@ CoreManager::CoreManager(QObject *parent)
 	tick_timer->start();
 	connect(tick_timer, &QTimer::timeout, this, &CoreManager::OnTick);
 	checkVersionServer();
-
-	auto token = core->login("user", "user");
-	if (token != nullptr)
-	{
-	qDebug() <<"token: "<< token;
-	//core->free_str(token);
-	}
-	
 }
 
 CoreManager::~CoreManager()
@@ -95,6 +87,17 @@ void CoreManager::OnTick()
 	//QImage image((const uchar*)(mat.data), mat.cols, mat.rows, mat.cols * (mat.channels()), QImage::Format_ARGB32);
 
 	emit next_frame(image);
+}
+
+QString CoreManager::get_token()
+{
+	auto token = core->login("user", "user");
+	if (token != nullptr)
+	{
+		qDebug() << "token: " << token;
+		//core->free_str(token);
+	}
+	return QString(token);
 }
 
 void CoreManager::set_genshin_handle(HWND handle)

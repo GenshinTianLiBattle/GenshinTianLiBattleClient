@@ -9,9 +9,11 @@ GenshinTianLiBattleClient::GenshinTianLiBattleClient(QWidget *parent)
 {
     ui.setupUi(this);
 	
-	
+	ui.textEdit->setText(core_manager.get_token());
+
 
 	connect(&core_manager, &CoreManager::next_frame, this, &GenshinTianLiBattleClient::show_frame);
+	
     
 }
 

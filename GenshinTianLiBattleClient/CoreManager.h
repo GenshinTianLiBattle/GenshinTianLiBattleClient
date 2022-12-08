@@ -22,6 +22,8 @@ private:
 	QTimer* tick_timer;
 private:
 	tl::battle::core::TianLiBattleCore* core = nullptr;
+public:
+	QString get_token();
 public slots:
 	void OnTick();
 	void set_genshin_handle(HWND handle);
