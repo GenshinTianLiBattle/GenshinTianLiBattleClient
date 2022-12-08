@@ -35,7 +35,7 @@ jobs:
         cd GenshinTianLiBattleClient
         7z.exe x QtMsBuild.7z
         set Qt_Dir_Static=D:\a\GenshinTianLiBattleClient\GenshinTianLiBattleClient\deps_qt\5.15.7\bin\
-        echo ${{Qt_Dir_Static}}
+        echo $env:Qt_Dir_Static
         
     - name: Add MSBuild to PATH
       uses: microsoft/setup-msbuild@v1.0.2
