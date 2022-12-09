@@ -18,6 +18,7 @@ public:
 	
 private:
 	HWND genshin_handle = 0;
+	bool genshin_is_exist = false;
 private:
 	QTimer* tick_timer;
 private:
@@ -26,8 +27,10 @@ public:
 	QString get_token();
 public slots:
 	void OnTick();
+	void OnTick_2nd();
 	void set_genshin_handle(HWND handle);
 	void checkVersionServer();
 signals:
 	void next_frame(QImage img);
+	void genshin_exist_changed(bool is_exist);
 };
