@@ -4,13 +4,22 @@
     <ClCompile Include="GenshinTianLiBattleClient.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="CoreManager.cpp" />
+    <ClCompile Include="common\TPopup.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="GenshinTianLiBattleClient.h" />
     <QtMoc Include="CoreManager.h" />
+    <QtMoc Include="common\TPopup.h">
+      <Filter>common</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="GenshinTianLiBattleClient.ui" />
+    <QtUic Include="common\TPopup.ui">
+      <Filter>common</Filter>
+    </QtUic>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="def">
@@ -24,6 +33,9 @@
     </Filter>
     <Filter Include="3rdpart">
       <UniqueIdentifier>{bd40ca6c-9cf1-410e-83c9-c8b04d895985}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="common">
+      <UniqueIdentifier>{37c217cf-5793-4da6-a204-956692759c25}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

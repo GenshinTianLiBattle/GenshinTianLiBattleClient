@@ -216,14 +216,17 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <QtRcc Include="GenshinTianLiBattleClient.qrc" />
+    <QtUic Include="common\TPopup.ui" />
     <QtUic Include="GenshinTianLiBattleClient.ui" />
     <QtMoc Include="GenshinTianLiBattleClient.h" />
+    <ClCompile Include="common\TPopup.cpp" />
     <ClCompile Include="CoreManager.cpp" />
     <ClCompile Include="GenshinTianLiBattleClient.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="CoreManager.h" />
+    <QtMoc Include="common\TPopup.h" />
     <ClInclude Include="def\version\Version.h" />
     <ClInclude Include="resource.h" />
   </ItemGroup>

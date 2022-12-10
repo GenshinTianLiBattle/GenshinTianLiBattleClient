@@ -3,6 +3,7 @@
 #include "ui_GenshinTianLiBattleClient.h"
 
 #include "CoreManager.h"
+#include "common/TPopup.h"
 
 class GenshinTianLiBattleClient : public QWidget
 {
@@ -18,6 +19,8 @@ private:
     QTimer* timer = nullptr;
 private:
 	CoreManager core_manager;
+private:
+	TPopup* popup = nullptr;
 
 public slots:
     void UpdateSelf(QString& updata_pkg_url);

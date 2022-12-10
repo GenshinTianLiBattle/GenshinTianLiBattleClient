@@ -10,7 +10,10 @@ GenshinTianLiBattleClient::GenshinTianLiBattleClient(QWidget *parent)
     : QWidget(parent)
 {
     ui.setupUi(this);
+
+	popup = new TPopup();
 	
+
 	ui.textEdit->setText(core_manager.get_token());
 
 
@@ -26,17 +29,20 @@ GenshinTianLiBattleClient::GenshinTianLiBattleClient(QWidget *parent)
 		{
 			is_clicked = false;
 			timer->stop();
+			popup->hide();
 		}
 		else 
 		{
 			is_clicked = true;
 			timer->start();
+			popup->show();
 		}
 		});
 }
 
 GenshinTianLiBattleClient::~GenshinTianLiBattleClient()
 {
+	delete popup;
 }
 void GenshinTianLiBattleClient::show_frame(QImage img)
 {
