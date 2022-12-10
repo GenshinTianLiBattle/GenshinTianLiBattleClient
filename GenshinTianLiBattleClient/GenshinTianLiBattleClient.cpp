@@ -76,7 +76,7 @@ void GenshinTianLiBattleClient::timer_tick()
 	QString str;
 	str = "x: " + QString::number(point.x) + " y: " + QString::number(point.y) + " | " + title;
 	
-	ui.label->setText(str);
+	ui.textEdit->setText(str);
 }
 void GenshinTianLiBattleClient::UpdateSelf(QString &updata_pkg_url)
 {
