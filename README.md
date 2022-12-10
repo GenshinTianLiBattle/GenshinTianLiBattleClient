@@ -1,32 +1,34 @@
 # GenshinTianLiBattleClient
 
-# Ô­ÉñÌìÀíÕ½Íø¿Í»§¶Ë
+[![Windows](https://github.com/GenshinTianLiBattle/GenshinTianLiBattleClient/actions/workflows/windows.yml/badge.svg)](https://github.com/GenshinTianLiBattle/GenshinTianLiBattleClient/actions/workflows/windows.yml)
 
-## ¹¦ÄÜ
+# åŸç¥å¤©ç†æˆ˜ç½‘å®¢æˆ·ç«¯
 
-- [ ] Á¬½ÓµÇÂ¼Õ½ÍøÆ½Ì¨
-- [ ] OCRÊ¶±ğUIDÊµÏÖÕËºÅµÇÂ¼
-- [ ] OCRÊ¶±ğ½çÃæµÈ£¨
+## åŠŸèƒ½
+
+- [ ] è¿æ¥ç™»å½•æˆ˜ç½‘å¹³å°
+- [ ] OCRè¯†åˆ«UIDå®ç°è´¦å·ç™»å½•
+- [ ] OCRè¯†åˆ«ç•Œé¢ç­‰ï¼ˆ
 - [ ] ...
 
-## Èë²Î»½Æğ
+## å…¥å‚å”¤èµ·
 
-- [ ] Í¨¹ıÃüÁîĞĞ²ÎÊı»½Æğ
-- [ ] Ö±½Ó´ò¿ª
+- [ ] é€šè¿‡å‘½ä»¤è¡Œå‚æ•°å”¤èµ·
+- [ ] ç›´æ¥æ‰“å¼€
 
 
-## ×Ô¶¯¸üĞÂ
+## è‡ªåŠ¨æ›´æ–°
 
-- [ ] ¼ì²â°æ±¾¸üĞÂ
-- [ ] API½Ó¿Ú»ñÈ¡¸üĞÂĞÅÏ¢
+- [ ] æ£€æµ‹ç‰ˆæœ¬æ›´æ–°
+- [ ] APIæ¥å£è·å–æ›´æ–°ä¿¡æ¯
 
-# Ä£¿é»®·Ö
+# æ¨¡å—åˆ’åˆ†
 
-- GenshinTianLiBattleClient Õ½Íø¿Í»§¶ËQtGUI 
-- GenshinTianLiBattleClient.Core Õ½Íø¿Í»§¶ËÄÚºËÄ£¿é [Core](https://github.com/GenshinTianLiBattle/GenshinTianLiBattleClient.Core.git)
+- GenshinTianLiBattleClient æˆ˜ç½‘å®¢æˆ·ç«¯QtGUI 
+- GenshinTianLiBattleClient.Core æˆ˜ç½‘å®¢æˆ·ç«¯å†…æ ¸æ¨¡å— [Core](https://github.com/GenshinTianLiBattle/GenshinTianLiBattleClient.Core.git)
     
-    3rdpart ÒÀÀµ¿â
-    - g2BeiDou.Capture »ñÈ¡ÓÎÏ·»­ÃæÄ£¿é [Capture](https://github.com/g2BeiDou/g2BeiDou.Capture.git)
-	- libocr OcrÊ¶±ğÄ£¿é [libocr](https://github.com/GengGode/libocr.git)
-    - [ ] ¼üÊó¿ØÖÆÄ£¿é
-    - [ ] ÍøÂç¿â
+    3rdpart ä¾èµ–åº“
+    - g2BeiDou.Capture è·å–æ¸¸æˆç”»é¢æ¨¡å— [Capture](https://github.com/g2BeiDou/g2BeiDou.Capture.git)
+	- libocr Ocrè¯†åˆ«æ¨¡å— [libocr](https://github.com/GengGode/libocr.git)
+    - [ ] é”®é¼ æ§åˆ¶æ¨¡å—
+    - [ ] ç½‘ç»œåº“
