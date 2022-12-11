@@ -91,7 +91,7 @@ void CoreManager::OnTick()
 	HBITMAP hCaptureBitmap = CreateCompatibleBitmap(hWindowDC, width, height);
 	SelectObject(hCaptureDC, hCaptureBitmap);
 	BitBlt(hCaptureDC, 0, 0, width, height, hWindowDC, 0, 0, SRCCOPY | CAPTUREBLT);
-	BITMAP bmp;
+	BITMAP bmp{};
 	GetObject(hCaptureBitmap, sizeof(BITMAP), &bmp);
 	auto map = QtWin::fromHBITMAP(hCaptureBitmap, QtWin::HBitmapAlpha);
 	cv::Mat mat;
