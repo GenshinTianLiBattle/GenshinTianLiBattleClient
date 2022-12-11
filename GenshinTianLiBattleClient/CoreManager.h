@@ -30,6 +30,7 @@ public slots:
 	void OnTick_2nd();
 	void set_genshin_handle(HWND handle);
 	void checkVersionServer();
+	void update_app();
 signals:
 	void next_frame(QImage img);
 	void genshin_exist_changed(bool is_exist);

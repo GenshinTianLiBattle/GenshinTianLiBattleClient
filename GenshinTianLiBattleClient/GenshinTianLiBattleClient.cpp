@@ -12,10 +12,14 @@ GenshinTianLiBattleClient::GenshinTianLiBattleClient(QWidget *parent)
     ui.setupUi(this);
 
 	popup = new TPopup();
-	
+	popup->show();
+
 
 	ui.textEdit->setText(core_manager.get_token());
 
+	QPushButton* button = new QPushButton(this);
+
+	connect(button, &QPushButton::clicked,&core_manager,&CoreManager::update_app);
 
 	connect(&core_manager, &CoreManager::next_frame, this, &GenshinTianLiBattleClient::show_frame);
 	connect(&core_manager, &CoreManager::genshin_exist_changed, this, &GenshinTianLiBattleClient::find_genshin);

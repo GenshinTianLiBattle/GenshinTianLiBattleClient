@@ -181,3 +181,25 @@ void CoreManager::checkVersionServer()
 	qDebug() << "server_uesd:" << server_uesd;
 	
 }
+
+void CoreManager::update_app()
+{
+	if (core->hasNewVersion())
+	{
+		if (core->downloadNewVersion())
+		{
+			core->run_update();
+			{
+				qDebug() << "update success";
+			}
+		}
+		else
+		{
+			qDebug() << "download failed";
+		}
+	}
+	else
+	{
+		qDebug() << "no new version";
+	}
+}
