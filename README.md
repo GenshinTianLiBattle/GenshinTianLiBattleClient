@@ -6,7 +6,7 @@
 
 ## 功能
 
-- [ ] 连接登录战网平台
+- [x] 连接登录战网平台
 - [ ] OCR识别UID实现账号登录
 - [ ] OCR识别界面等（
 - [ ] ...
@@ -14,13 +14,13 @@
 ## 入参唤起
 
 - [ ] 通过命令行参数唤起
-- [ ] 直接打开
+- [x] 直接打开
 
 
 ## 自动更新
 
-- [ ] 检测版本更新
-- [ ] API接口获取更新信息
+- [x] 检测版本更新
+- [x] API接口获取更新信息
 
 # 模块划分
 
@@ -31,4 +31,6 @@
     - g2BeiDou.Capture 获取游戏画面模块 [Capture](https://github.com/g2BeiDou/g2BeiDou.Capture.git)
 	- libocr Ocr识别模块 [libocr](https://github.com/GengGode/libocr.git)
     - [ ] 键鼠控制模块
-    - [ ] 网络库
+    - [x] 网络库 cpr
+    - [x] 解压缩 libzippp
+    - [ ] 串口 serial
