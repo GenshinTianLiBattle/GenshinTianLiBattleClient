@@ -74,12 +74,11 @@ jobs:
     - name: Make Zip Pkg
       run: |
         dir
-        GenshinTianLiBattleClient\7z.exe a D:\a\GenshinTianLiBattleClient\GenshinTianLiBattleClient/x64\${{env.BUILD_CONFIGURATION}}\GenshinTianLiBattleClient.exe -oD:\a\GenshinTianLiBattleClient\GenshinTianLiBattleClient/GenshinTianLiBattleClient$version.zip
+        .\GenshinTianLiBattleClient\7z.exe a -tZip GenshinTianLiBattleClient$version.zip D:\a\GenshinTianLiBattleClient\GenshinTianLiBattleClient/x64\${{env.BUILD_CONFIGURATION}}\GenshinTianLiBattleClient.exe
         dir
-        dir x64\${{env.BUILD_CONFIGURATION}}\
         # 计算md5
-        $md5 = Get-FileHash -Path D:\a\GenshinTianLiBattleClient\GenshinTianLiBattleClient/GenshinTianLiBattleClient$version.zip -Algorithm MD5
-        echo $md5>hash.md5
+        $md5 = Get-FileHash -Path GenshinTianLiBattleClient$version.zip -Algorithm MD5
+        Out-File -FilePath "hash.md5" -InputObject $md5
         echo $md5
         
     - name: Upload To Download site
