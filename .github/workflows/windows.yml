@@ -31,7 +31,12 @@ jobs:
         tar -xf alidrive.zip --strip-components 1
         dir
         del example.config.yaml
-        echo ${{secrets.ALICLOUD_CLI_UPADTE_CONFIGYAML}}>config.yaml
+        # echo ${{secrets.ALICLOUD_CLI_UPADTE_CONFIGYAML}}>config.yaml
+        # YAML是多行的 通过EOF多行写入到yaml中
+        cat <<EOF>>config.yaml
+        ${{secrets.ALICLOUD_CLI_UPADTE_CONFIGYAML}}
+        EOF
+        cat config.yaml
         
     - name: Clone Submodules
       run: git submodule update --init --recursive
