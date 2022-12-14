@@ -58,6 +58,12 @@ jobs:
       # See https://docs.microsoft.com/visualstudio/msbuild/msbuild-command-line-reference
       run: msbuild /m /p:Configuration=${{env.BUILD_CONFIGURATION}} ${{env.SOLUTION_FILE_PATH}}
     
+    - name: Test Version
+      run: |
+        cd GenshinTianLiBattleClient/x64/${{env.BUILD_CONFIGURATION}}/
+        .\GenshinTianLiBattleClient.exe -V
+        echo "Test Version Success"
+        
     - name: Copy Pkg
       run: |
         mkdir  D:\a\GenshinTianLiBattleClient\GenshinTianLiBattleClient/artifact
