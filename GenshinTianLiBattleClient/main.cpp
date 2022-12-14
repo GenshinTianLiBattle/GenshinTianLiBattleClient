@@ -9,6 +9,12 @@ int main(int argc, char *argv[])
 		printf("%s\n", tl::battle::client::version::version);
 		return 0;
 	}
+	// -V Êä³öÍêÕû±àÒëºÅ 
+	if (argc > 1 && strcmp(argv[1], "-V") == 0)
+	{
+		printf("%s\n", tl::battle::client::version::build_version);
+		return 0;
+	}
 
     QApplication a(argc, argv);
     GenshinTianLiBattleClient w;

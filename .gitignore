@@ -362,3 +362,5 @@ MigrationBackup/
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
 *.mp4
+/GenshinTianLiBattleClient/def/version/version.branch
+/GenshinTianLiBattleClient/def/version/version_hash.hash

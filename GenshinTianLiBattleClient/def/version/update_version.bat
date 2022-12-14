@@ -1,0 +1,1 @@
+call  def\version\use_new_version.bat
