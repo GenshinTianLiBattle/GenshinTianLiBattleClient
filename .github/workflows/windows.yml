@@ -61,14 +61,15 @@ jobs:
     - name: Test Version
       run: |
         .\x64\${{env.BUILD_CONFIGURATION}}\GenshinTianLiBattleClient.exe -V
-    - name: Make Zip Pkg
-      run: |
-        $version=.\x64\${{env.BUILD_CONFIGURATION}}\GenshinTianLiBattleClient.exe -v 
-        $build_version=.\x64\${{env.BUILD_CONFIGURATION}}\GenshinTianLiBattleClient.exe -V 
+        $version=\x64\${{env.BUILD_CONFIGURATION}}\GenshinTianLiBattleClient.exe -v 
+        $build_version=\x64\${{env.BUILD_CONFIGURATION}}\GenshinTianLiBattleClient.exe -V 
+        echo $version
         echo $version >version.ver
         echo $build_version >build_version.ver
+    - name: Make Zip Pkg
+      run: |
         dir
-        GenshinTianLiBattleClient\7z.exe a x64\${{env.BUILD_CONFIGURATION}}\GenshinTianLiBattleClient.exe -oD:\a\GenshinTianLiBattleClient\GenshinTianLiBattleClient/GenshinTianLiBattleClient$version.zip
+        GenshinTianLiBattleClient\7z.exe a D:\a\GenshinTianLiBattleClient\GenshinTianLiBattleClient/x64\${{env.BUILD_CONFIGURATION}}\GenshinTianLiBattleClient.exe -oD:\a\GenshinTianLiBattleClient\GenshinTianLiBattleClient/GenshinTianLiBattleClient$version.zip
         dir
         dir x64\${{env.BUILD_CONFIGURATION}}\
         # 计算md5
