@@ -60,25 +60,18 @@ jobs:
     
     - name: Test Version
       run: |
-        
-        echo "Test Version Success"
+        .\x64\${{env.BUILD_CONFIGURATION}}\GenshinTianLiBattleClient.exe -V
     - name: Make Zip Pkg
       run: |
-        .\x64\${{env.BUILD_CONFIGURATION}}\GenshinTianLiBattleClient.exe -v 
         $version=.\x64\${{env.BUILD_CONFIGURATION}}\GenshinTianLiBattleClient.exe -v 
-        $version=Get-Content GenshinTianLiBattleClient\def\version\version.ver
-        # 将 $version 写入到 ver 文件
+        $build_version=.\x64\${{env.BUILD_CONFIGURATION}}\GenshinTianLiBattleClient.exe -V 
         echo $version >version.ver
+        echo $build_version >build_version.ver
         dir
-        echo version:$version
-        .\x64\${{env.BUILD_CONFIGURATION}}\GenshinTianLiBattleClient.exe -V >build_version.ver
-        $version=Get-Content version.ver
-        dir
-        echo version:$version
-        GenshinTianLiBattleClient\7z.exe a x64\${{env.BUILD_CONFIGURATION}}\GenshinTianLiBattleClient.exe -o.\GenshinTianLiBattleClient$version.zip
+        GenshinTianLiBattleClient\7z.exe a x64\${{env.BUILD_CONFIGURATION}}\GenshinTianLiBattleClient.exe -oD:\a\GenshinTianLiBattleClient\GenshinTianLiBattleClient/GenshinTianLiBattleClient$version.zip
         dir
         # 计算md5
-        $md5 = Get-FileHash -Path GenshinTianLiBattleClient$version.zip -Algorithm MD5
+        $md5 = Get-FileHash -Path D:\a\GenshinTianLiBattleClient\GenshinTianLiBattleClient/GenshinTianLiBattleClient$version.zip -Algorithm MD5
         echo $md5>hash.md5
         echo $md5
         
