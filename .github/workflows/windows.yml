@@ -32,8 +32,11 @@ jobs:
         dir
         del example.config.yaml
         # echo ${{secrets.ALICLOUD_CLI_UPADTE_CONFIGYAML}}>config.yaml
-        # YAML是多行的 通过EOF多行写入到yaml中
-        Out-File -FilePath config.yaml -InputObject ${{secrets.ALICLOUD_CLI_UPADTE_CONFIGYAML}} -Encoding utf8 -Append
+        $config = @"
+        ${{secrets.ALICLOUD_CLI_UPADTE_CONFIGYAML}}
+        "@
+        $config | Out-File -FilePath config.yaml -Encoding utf8
+        
         
     - name: Clone Submodules
       run: git submodule update --init --recursive
