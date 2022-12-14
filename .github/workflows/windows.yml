@@ -22,7 +22,6 @@ jobs:
       Opencv_Dir_Static : D:/a/GenshinTianLiBattleClient/GenshinTianLiBattleClient/opencv/
     steps:
     - uses: actions/checkout@v3
-    - shell: powershell
       with:
         submodules: recursive
         token: ${{ secrets.GENSHINTIANLIBATTLECORE_PRIVATE }}
