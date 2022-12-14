@@ -67,10 +67,10 @@ jobs:
         "build_version=(.\x64\${{env.BUILD_CONFIGURATION}}\GenshinTianLiBattleClient.exe -V)">> $env:GITHUB_ENV
         echo $version
         $version='0.0.2'
-        echo $version>version.ver
-        echo $version>version_ver
-        echo $build_version>build_version.ver
-        echo $build_version>build_version_ver
+        echo $version>>version.ver
+        echo $version>>version_ver
+        echo $build_version>>build_version.ver
+        echo $build_version>>build_version_ver
         dir
         
     - name: Make Zip Pkg
@@ -84,6 +84,7 @@ jobs:
         $md5 = Get-FileHash -Path D:\a\GenshinTianLiBattleClient\GenshinTianLiBattleClient/GenshinTianLiBattleClient$version.zip -Algorithm MD5
         echo $md5>hash.md5
         echo $md5
+        dir
         
     - name: Upload To Download site
       run: |
