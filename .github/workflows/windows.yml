@@ -76,7 +76,7 @@ jobs:
         
     - name: Upload To Download site
       run: |
-        $CORE_DOWNLOAD_URL=$PROXY$(curl -fsSL https://api.github.com/repos/aoaostar/alidrive-uploader/releases/latest | grep "browser_download_url.*windows.*amd64" | cut -d '"' -f 4)
+        $CORE_DOWNLOAD_URL=$(curl -fsSL https://api.github.com/repos/aoaostar/alidrive-uploader/releases/latest | grep "browser_download_url.*windows.*amd64" | cut -d '"' -f 4)
         curl -L "$CORE_DOWNLOAD_URL" | tar -xz
         del example.config.yaml
         echo ${{secrets.ALICLOUD_CLI_UPADTE_CONFIGYAML}}>config.yaml
