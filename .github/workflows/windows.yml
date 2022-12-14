@@ -60,31 +60,27 @@ jobs:
     
     - name: Test Version
       run: |
-        dir
         .\x64\${{env.BUILD_CONFIGURATION}}\GenshinTianLiBattleClient.exe -V
         $version=(.\x64\${{env.BUILD_CONFIGURATION}}\GenshinTianLiBattleClient.exe -v)
         $build_version=(.\x64\${{env.BUILD_CONFIGURATION}}\GenshinTianLiBattleClient.exe -V)
         "build_version=(.\x64\${{env.BUILD_CONFIGURATION}}\GenshinTianLiBattleClient.exe -V)">> $env:GITHUB_ENV
         echo $version
         $version='0.0.2'
-        echo $version>>version.ver
-        echo $version>>version_ver
-        echo $build_version>>build_version.ver
-        echo $build_version>>build_version_ver
-        dir
+        # 输出到文件
+        Out-File -FilePath "version.ver" -InputObject $version
+        echo $version>version.ver
+        echo $build_version>build_version.ver
         
     - name: Make Zip Pkg
       run: |
         dir
-        echo D:\a\GenshinTianLiBattleClient\GenshinTianLiBattleClient/x64\${{env.BUILD_CONFIGURATION}}\GenshinTianLiBattleClient.exe -oD:\a\GenshinTianLiBattleClient\GenshinTianLiBattleClient/GenshinTianLiBattleClient$version.zip
-        .\GenshinTianLiBattleClient\7z.exe a -tZip GenshinTianLiBattleClient$version.zip D:\a\GenshinTianLiBattleClient\GenshinTianLiBattleClient/x64\${{env.BUILD_CONFIGURATION}}\GenshinTianLiBattleClient.exe
+        GenshinTianLiBattleClient\7z.exe a D:\a\GenshinTianLiBattleClient\GenshinTianLiBattleClient/x64\${{env.BUILD_CONFIGURATION}}\GenshinTianLiBattleClient.exe -oD:\a\GenshinTianLiBattleClient\GenshinTianLiBattleClient/GenshinTianLiBattleClient$version.zip
         dir
         dir x64\${{env.BUILD_CONFIGURATION}}\
         # 计算md5
         $md5 = Get-FileHash -Path D:\a\GenshinTianLiBattleClient\GenshinTianLiBattleClient/GenshinTianLiBattleClient$version.zip -Algorithm MD5
         echo $md5>hash.md5
         echo $md5
-        dir
         
     - name: Upload To Download site
       run: |
