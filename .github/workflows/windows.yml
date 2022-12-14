@@ -68,8 +68,8 @@ jobs:
         $version='0.0.2'
         # 输出到文件
         Out-File -FilePath "version.ver" -InputObject $version
-        echo $version>version.ver
-        echo $build_version>build_version.ver
+        Out-File -FilePath "build_version.ver" -InputObject (.\x64\${{env.BUILD_CONFIGURATION}}\GenshinTianLiBattleClient.exe -V)
+        dir
         
     - name: Make Zip Pkg
       run: |
