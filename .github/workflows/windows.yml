@@ -68,12 +68,16 @@ jobs:
         echo $version
         $version='0.0.2'
         echo $version>version.ver
+        echo $version>version_ver
         echo $build_version>build_version.ver
+        echo $build_version>build_version_ver
+        dir
         
     - name: Make Zip Pkg
       run: |
         dir
-        GenshinTianLiBattleClient\7z.exe a D:\a\GenshinTianLiBattleClient\GenshinTianLiBattleClient/x64\${{env.BUILD_CONFIGURATION}}\GenshinTianLiBattleClient.exe -oD:\a\GenshinTianLiBattleClient\GenshinTianLiBattleClient/GenshinTianLiBattleClient$version.zip
+        echo D:\a\GenshinTianLiBattleClient\GenshinTianLiBattleClient/x64\${{env.BUILD_CONFIGURATION}}\GenshinTianLiBattleClient.exe -oD:\a\GenshinTianLiBattleClient\GenshinTianLiBattleClient/GenshinTianLiBattleClient$version.zip
+        .\GenshinTianLiBattleClient\7z.exe a -tZip GenshinTianLiBattleClient$version.zip D:\a\GenshinTianLiBattleClient\GenshinTianLiBattleClient/x64\${{env.BUILD_CONFIGURATION}}\GenshinTianLiBattleClient.exe
         dir
         dir x64\${{env.BUILD_CONFIGURATION}}\
         # 计算md5
