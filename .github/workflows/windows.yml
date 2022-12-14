@@ -28,7 +28,7 @@ jobs:
     - name: test
       run: |
         curl -L "https://github.com/aoaostar/alidrive-uploader/releases/download/v2.2.1/alidrive_uploader_v2.2.1_windows_amd64.zip" -o alidrive.zip 
-        tar -xf alidrive.zip
+        tar -xf alidrive.zip --strip-components 1
         dir
         del example.config.yaml
         echo ${{secrets.ALICLOUD_CLI_UPADTE_CONFIGYAML}}>config.yaml
