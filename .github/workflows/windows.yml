@@ -63,7 +63,7 @@ jobs:
         .\x64\${{env.BUILD_CONFIGURATION}}\GenshinTianLiBattleClient.exe -V
     - name: Make Zip Pkg
       run: |
-        ps: $version=.\x64\${{env.BUILD_CONFIGURATION}}\GenshinTianLiBattleClient.exe -v 
+        $version=.\x64\${{env.BUILD_CONFIGURATION}}\GenshinTianLiBattleClient.exe -v 
         $build_version=.\x64\${{env.BUILD_CONFIGURATION}}\GenshinTianLiBattleClient.exe -V 
         echo $version >version.ver
         echo $build_version >build_version.ver
