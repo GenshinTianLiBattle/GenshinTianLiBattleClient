@@ -60,7 +60,7 @@ jobs:
     
     - name: Test Version
       run: |
-        cd GenshinTianLiBattleClient/x64/${{env.BUILD_CONFIGURATION}}/
+        cd x64/${{env.BUILD_CONFIGURATION}}/
         .\GenshinTianLiBattleClient.exe -V
         echo "Test Version Success"
         
