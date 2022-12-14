@@ -64,8 +64,8 @@ jobs:
         echo "Test Version Success"
     - name: Make Zip Pkg
       run: |
-        x64\${{env.BUILD_CONFIGURATION}}\GenshinTianLiBattleClient.exe -v>>version.ver
-        x64\${{env.BUILD_CONFIGURATION}}\GenshinTianLiBattleClient.exe -V>>build_version.ver
+        echo x64\${{env.BUILD_CONFIGURATION}}\GenshinTianLiBattleClient.exe -v>>version.ver
+        echo x64\${{env.BUILD_CONFIGURATION}}\GenshinTianLiBattleClient.exe -V>>build_version.ver
         $version = Get-Content version.ver
         echo $version
         GenshinTianLiBattleClient\7z.exe a x64\${{env.BUILD_CONFIGURATION}}\GenshinTianLiBattleClient.exe -oGenshinTianLiBattleClient$version.zip
