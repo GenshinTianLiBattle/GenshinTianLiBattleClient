@@ -68,9 +68,10 @@ jobs:
         .\x64\${{env.BUILD_CONFIGURATION}}\GenshinTianLiBattleClient.exe -v >>version.ver
         .\x64\${{env.BUILD_CONFIGURATION}}\GenshinTianLiBattleClient.exe -V >>build_version.ver
         $version=Get-Content version.ver
-        tree
+        dir
         echo version:$version
         GenshinTianLiBattleClient\7z.exe a x64\${{env.BUILD_CONFIGURATION}}\GenshinTianLiBattleClient.exe -oGenshinTianLiBattleClient$version.zip
+        dir
         # 计算md5
         $md5 = Get-FileHash -Path GenshinTianLiBattleClient$version.zip -Algorithm MD5
         echo $md5>>hash.md5
