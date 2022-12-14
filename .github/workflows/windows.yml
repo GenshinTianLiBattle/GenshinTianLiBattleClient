@@ -60,9 +60,42 @@ jobs:
     
     - name: Test Version
       run: |
-        cd x64/${{env.BUILD_CONFIGURATION}}/
-        .\GenshinTianLiBattleClient.exe -V
+        
         echo "Test Version Success"
+    - name: Make Zip Pkg
+      run: |
+        x64\${{env.BUILD_CONFIGURATION}}\GenshinTianLiBattleClient.exe -v>>version.ver
+        x64\${{env.BUILD_CONFIGURATION}}\GenshinTianLiBattleClient.exe -V>>build_version.ver
+        $version = Get-Content version.ver
+        echo $version
+        GenshinTianLiBattleClient\7z.exe a x64\${{env.BUILD_CONFIGURATION}}\GenshinTianLiBattleClient.exe -oGenshinTianLiBattleClient$version.zip
+        # 计算md5
+        $md5 = Get-FileHash -Path GenshinTianLiBattleClient$version.zip -Algorithm MD5
+        echo $md5>>hash.md5
+        echo $md5
+        
+    - name: Upload To Download site
+      run: |
+        curl -sL https://raw.githubusercontent.com/aoaostar/alidrive-uploader/v2/install.sh | bash 
+        del example.config.yaml
+        ${{secrets.ALICLOUD_CLI_UPADTE_CONFIGYAML}}>>config.yaml
+        alidrive .\GenshinTianLiBattleClient.zip \
+        
+    - name: Update Api Version
+      run: |
+        $version = Get-Content version.ver
+        $buildversion = Get-Content build_version.ver
+        $md5 = Get-Content hash.md5
+        curl -X POST http://update.api.weixitianli.com/Artifact?token=${{secrets.GENSHINTIANLIBATTLECLIENTUPDATE_ARTIFACT_TOKEN}} \
+        -H 'accept: text/plain' \
+        -H 'Content-Type: application/json' \
+        -d '{ \
+        "version": "$version", \
+        "downloadUrl": "http://download.weixitianli.com/d/GenshinTianLiBattleClient/GenshinTianLiBattleClient$version.zip", \
+        "hash": "$md5", \
+        "buildVersion": "$buildversion" \
+        }'
+       
         
     - name: Copy Pkg
       run: |
