@@ -88,7 +88,8 @@ jobs:
         $version = Get-Content version.ver
         $buildversion = Get-Content build_version.ver
         $md5 = Get-Content md5.hash
-        $url='http://update.api.weixitianli.com/Artifact?token=${{secrets.GENSHINTIANLIBATTLECLIENTUPDATE_ARTIFACT_TOKEN}}'
+        $token=${{secrets.GENSHINTIANLIBATTLECLIENTUPDATE_ARTIFACT_TOKEN}}
+        $url='http://update.api.weixitianli.com/Artifact?token='$token
         # $body='{"version": "$version","downloadUrl": "http://download.weixitianli.com/d/GenshinTianLiBattleClient/GenshinTianLiBattleClient-$version.zip", "hash": "$md5","buildVersion": "$buildversion"}'
         # 无法取到变量，改为字符串拼接
         $body='{"version": "'+$version+'","downloadUrl": "http://download.weixitianli.com/d/GenshinTianLiBattleClient/GenshinTianLiBattleClient-' + $version + '.zip", "hash": "' + $md5 + '","buildVersion": "' + $buildversion + '"}'
