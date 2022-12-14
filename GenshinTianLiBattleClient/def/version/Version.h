@@ -4,15 +4,15 @@ namespace tl::battle::client
 	namespace version
 	{
 #ifdef _DEBUG
-			const char* version = "0.0.0";
-			int version_major = 0;
-			int version_minor = 0;
-			int version_patch = 0;
-#else
-			const char* version = "0.1.0";
-			int version_major = 0;
-			int version_minor = 1;
-			int version_patch = 0;
+			static const char* version = "0.0.0";
+			static int version_major = 0;
+			static int version_minor = 0;
+			static int version_patch = 0;
+#else		
+			static const char* version = "0.1.0";
+			static int version_major = 0;
+			static int version_minor = 1;
+			static int version_patch = 0;
 #endif // _DEBUG
 
 	}

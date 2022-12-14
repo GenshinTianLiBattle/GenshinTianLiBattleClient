@@ -1,7 +1,5 @@
 #include "GenshinTianLiBattleClient.h"
 
-#include "def/version/Version.h" // This is the header file that contains the version number
-
 #include <QString>
 #include <QPixmap>
 #include <QTimer>
