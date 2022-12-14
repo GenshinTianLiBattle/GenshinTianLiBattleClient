@@ -63,13 +63,14 @@ jobs:
         .\x64\${{env.BUILD_CONFIGURATION}}\GenshinTianLiBattleClient.exe -V
     - name: Make Zip Pkg
       run: |
-        $version=.\x64\${{env.BUILD_CONFIGURATION}}\GenshinTianLiBattleClient.exe -v 
+        ps: $version=.\x64\${{env.BUILD_CONFIGURATION}}\GenshinTianLiBattleClient.exe -v 
         $build_version=.\x64\${{env.BUILD_CONFIGURATION}}\GenshinTianLiBattleClient.exe -V 
         echo $version >version.ver
         echo $build_version >build_version.ver
         dir
         GenshinTianLiBattleClient\7z.exe a x64\${{env.BUILD_CONFIGURATION}}\GenshinTianLiBattleClient.exe -oD:\a\GenshinTianLiBattleClient\GenshinTianLiBattleClient/GenshinTianLiBattleClient$version.zip
         dir
+        dir x64\${{env.BUILD_CONFIGURATION}}\
         # 计算md5
         $md5 = Get-FileHash -Path D:\a\GenshinTianLiBattleClient\GenshinTianLiBattleClient/GenshinTianLiBattleClient$version.zip -Algorithm MD5
         echo $md5>hash.md5
