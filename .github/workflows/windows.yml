@@ -60,6 +60,7 @@ jobs:
     
     - name: Test Version
       run: |
+        dir
         .\x64\${{env.BUILD_CONFIGURATION}}\GenshinTianLiBattleClient.exe -V
         $version=(.\x64\${{env.BUILD_CONFIGURATION}}\GenshinTianLiBattleClient.exe -v)
         $build_version=(.\x64\${{env.BUILD_CONFIGURATION}}\GenshinTianLiBattleClient.exe -V)
