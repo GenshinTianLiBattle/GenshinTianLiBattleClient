@@ -81,7 +81,7 @@ jobs:
         dir
         del example.config.yaml
         Out-File -FilePath config.yaml -InputObject "${{secrets.ALICLOUD_CLI_UPADTE_CONFIGYAML}}"
-        alidrive .\GenshinTianLiBattleClient-$version.zip /
+        .\alidrive.exe .\GenshinTianLiBattleClient-$version.zip /
         
     - name: Update Api Version
       run: |
