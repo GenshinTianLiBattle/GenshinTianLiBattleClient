@@ -21,7 +21,6 @@ jobs:
       Qt_Dir_Static : D:/a/GenshinTianLiBattleClient/GenshinTianLiBattleClient/deps_qt/5.15.7/
       Opencv_Dir_Static : D:/a/GenshinTianLiBattleClient/GenshinTianLiBattleClient/opencv/
     steps:
-    - shell: powershell
     - uses: actions/checkout@v3
       with:
         submodules: recursive
