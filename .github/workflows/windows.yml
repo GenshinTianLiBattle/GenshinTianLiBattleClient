@@ -32,9 +32,7 @@ jobs:
         dir
         del example.config.yaml
         # echo ${{secrets.ALICLOUD_CLI_UPADTE_CONFIGYAML}}>config.yaml
-        $config = @"
-        ${{secrets.ALICLOUD_CLI_UPADTE_CONFIGYAML}}
-        "@
+        $config=@"${{secrets.ALICLOUD_CLI_UPADTE_CONFIGYAML}}"@
         $config | Out-File -FilePath config.yaml -Encoding utf8
         
         
