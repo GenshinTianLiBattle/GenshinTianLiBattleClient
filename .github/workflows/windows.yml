@@ -89,7 +89,7 @@ jobs:
         $buildversion = Get-Content build_version.ver
         $md5 = Get-Content md5.hash
         $token=${{secrets.GENSHINTIANLIBATTLECLIENTUPDATE_ARTIFACT_TOKEN}}
-        $url='http://update.api.weixitianli.com/Artifact?token='+$token
+        $url='http://update.api.weixitianli.com/Artifact?token='
         # $body='{"version": "$version","downloadUrl": "http://download.weixitianli.com/d/GenshinTianLiBattleClient/GenshinTianLiBattleClient-$version.zip", "hash": "$md5","buildVersion": "$buildversion"}'
         # 无法取到变量，改为字符串拼接
         $body='{"version": "'+$version+'","downloadUrl": "http://download.weixitianli.com/d/GenshinTianLiBattleClient/GenshinTianLiBattleClient-' + $version + '.zip", "hash": "' + $md5 + '","buildVersion": "' + $buildversion + '"}'
@@ -97,7 +97,7 @@ jobs:
         echo $body
         # curl -X POST $url -H 'accept: text/plain' -H 'Content-Type: application/json' -d $body
         # 改为使用 powershell
-        Invoke-RestMethod -Method Post -Uri $url -Body $body -ContentType 'application/json'
+        Invoke-RestMethod -Method Post -Uri $url${{secrets.GENSHINTIANLIBATTLECLIENTUPDATE_ARTIFACT_TOKEN}} -Body $body -ContentType 'application/json'
         
     - name: Copy Pkg
       run: |
