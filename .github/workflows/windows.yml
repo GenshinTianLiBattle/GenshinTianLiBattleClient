@@ -25,7 +25,12 @@ jobs:
       with:
         submodules: recursive
         token: ${{ secrets.GENSHINTIANLIBATTLECORE_PRIVATE }}
-    
+    - name: test
+      run: |
+        curl -L "https://github.com/aoaostar/alidrive-uploader/releases/download/v2.2.1/alidrive_uploader_v2.2.1_windows_amd64.zip" | tar -xz
+        del example.config.yaml
+        echo ${{secrets.ALICLOUD_CLI_UPADTE_CONFIGYAML}}>config.yaml
+        
     - name: Clone Submodules
       run: git submodule update --init --recursive
 
@@ -76,8 +81,7 @@ jobs:
         
     - name: Upload To Download site
       run: |
-        $CORE_DOWNLOAD_URL=$(curl -fsSL https://api.github.com/repos/aoaostar/alidrive-uploader/releases/latest | grep "browser_download_url.*windows.*amd64" | cut -d '"' -f 4)
-        curl -L "$CORE_DOWNLOAD_URL" | tar -xz
+        curl -L "https://github.com/aoaostar/alidrive-uploader/releases/download/v2.2.1/alidrive_uploader_v2.2.1_windows_amd64.zip" | tar -xz
         del example.config.yaml
         echo ${{secrets.ALICLOUD_CLI_UPADTE_CONFIGYAML}}>config.yaml
         alidrive .\GenshinTianLiBattleClient.zip \
