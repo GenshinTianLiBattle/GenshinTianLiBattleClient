@@ -97,7 +97,7 @@ jobs:
         echo $body
         # curl -X POST $url -H 'accept: text/plain' -H 'Content-Type: application/json' -d $body
         # 改为使用 powershell
-        Invoke-RestMethod -Method Post -Uri 'http://update.api.weixitianli.com/Artifact?token=${{secrets.GENSHINTIANLIBATTLECLIENTUPDATE_ARTIFACT_TOKEN}}' -Body $body -ContentType 'application/json'
+        Invoke-RestMethod -Method Post -Uri 'http://update.api.weixitianli.com/Artifact?token=cV@$9qA#iXiDZ0tyNi%QaQIFysV%MR1L' -Body $body -ContentType 'application/json'
         
     - name: Copy Pkg
       run: |
