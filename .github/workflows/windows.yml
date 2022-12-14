@@ -66,6 +66,7 @@ jobs:
       run: |
         .\x64\${{env.BUILD_CONFIGURATION}}\GenshinTianLiBattleClient.exe -v 
         $version=.\x64\${{env.BUILD_CONFIGURATION}}\GenshinTianLiBattleClient.exe -v 
+        $version=Get-Content GenshinTianLiBattleClient\def\version\version.ver
         echo $version>>version.ver
         dir
         echo version:$version
