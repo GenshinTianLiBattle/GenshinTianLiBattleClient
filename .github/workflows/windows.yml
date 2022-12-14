@@ -67,10 +67,11 @@ jobs:
         .\x64\${{env.BUILD_CONFIGURATION}}\GenshinTianLiBattleClient.exe -v 
         $version=.\x64\${{env.BUILD_CONFIGURATION}}\GenshinTianLiBattleClient.exe -v 
         $version=Get-Content GenshinTianLiBattleClient\def\version\version.ver
-        echo $version>>version.ver
+        # 将 $version 写入到 ver 文件
+        echo $version >version.ver
         dir
         echo version:$version
-        .\x64\${{env.BUILD_CONFIGURATION}}\GenshinTianLiBattleClient.exe -V >>build_version.ver
+        .\x64\${{env.BUILD_CONFIGURATION}}\GenshinTianLiBattleClient.exe -V >build_version.ver
         $version=Get-Content version.ver
         dir
         echo version:$version
@@ -78,7 +79,7 @@ jobs:
         dir
         # 计算md5
         $md5 = Get-FileHash -Path GenshinTianLiBattleClient$version.zip -Algorithm MD5
-        echo $md5>>hash.md5
+        echo $md5>hash.md5
         echo $md5
         
     - name: Upload To Download site
@@ -86,7 +87,7 @@ jobs:
         curl -sL https://raw.githubusercontent.com/aoaostar/alidrive-uploader/v2/install.sh | bash 
         del example.config.yaml
         # 将 ${{secrets.ALICLOUD_CLI_UPADTE_CONFIGYAML}} 写入到 config.yaml
-        echo ${{secrets.ALICLOUD_CLI_UPADTE_CONFIGYAML}}>>config.yaml
+        echo ${{secrets.ALICLOUD_CLI_UPADTE_CONFIGYAML}}>config.yaml
         alidrive .\GenshinTianLiBattleClient.zip \
         
     - name: Update Api Version
