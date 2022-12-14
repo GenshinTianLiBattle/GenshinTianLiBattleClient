@@ -31,11 +31,11 @@ jobs:
         tar -xf alidrive.zip --strip-components 1
         dir
         del example.config.yaml
+        Install-Module -Name powershell-yaml -Force -Repository PSGallery -Scope CurrentUser
         # echo ${{secrets.ALICLOUD_CLI_UPADTE_CONFIGYAML}}>config.yaml
-        $config=@'
+        Out-File -FilePath config.yaml -Encoding utf8 @'
         ${{secrets.ALICLOUD_CLI_UPADTE_CONFIGYAML}}
         '@
-        $config | Out-File -FilePath config.yaml -Encoding utf8
         
         
     - name: Clone Submodules
