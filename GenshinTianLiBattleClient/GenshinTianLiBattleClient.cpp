@@ -8,16 +8,16 @@ GenshinTianLiBattleClient::GenshinTianLiBattleClient(QWidget *parent)
     : QWidget(parent)
 {
     ui.setupUi(this);
+	this->setWindowFlags(Qt::FramelessWindowHint);
+	this->setAttribute(Qt::WA_TranslucentBackground, true);
 
 	popup = new TPopup();
 	popup->show();
 
 
-	ui.textEdit->setText(core_manager.get_token());
+	//ui.textEdit->setText(core_manager.get_token());
 
-	QPushButton* button = new QPushButton(this);
-
-	connect(button, &QPushButton::clicked,&core_manager,&CoreManager::update_app);
+	connect(ui.pushButton_2, &QPushButton::clicked,&core_manager,&CoreManager::update_app);
 
 	connect(&core_manager, &CoreManager::next_frame, this, &GenshinTianLiBattleClient::show_frame);
 	connect(&core_manager, &CoreManager::genshin_exist_changed, this, &GenshinTianLiBattleClient::find_genshin);
@@ -78,7 +78,7 @@ void GenshinTianLiBattleClient::timer_tick()
 	QString str;
 	str = "x: " + QString::number(point.x) + " y: " + QString::number(point.y) + " | " + title;
 	
-	ui.textEdit->setText(str);
+	//ui.textEdit->setText(str);
 }
 void GenshinTianLiBattleClient::UpdateSelf(QString &updata_pkg_url)
 {
