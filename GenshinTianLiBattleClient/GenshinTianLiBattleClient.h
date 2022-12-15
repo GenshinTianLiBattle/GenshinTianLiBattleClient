@@ -22,7 +22,13 @@ private:
 	CoreManager core_manager;
 private:
 	TPopup* popup = nullptr;
-
+private:
+    QPoint move_press;
+    QPoint move_value;
+    bool is_left_clicked = false;
+    void mousePressEvent(QMouseEvent* event) Q_DECL_OVERRIDE;
+    void mouseReleaseEvent(QMouseEvent* event) Q_DECL_OVERRIDE;
+    void mouseMoveEvent(QMouseEvent* event) Q_DECL_OVERRIDE;
 public slots:
     void UpdateSelf(QString& updata_pkg_url);
     void show_frame(QImage img);

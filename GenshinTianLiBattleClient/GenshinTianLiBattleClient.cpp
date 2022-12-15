@@ -1,5 +1,6 @@
 #include "GenshinTianLiBattleClient.h"
 
+#include <QMouseEvent>
 #include <QString>
 #include <QPixmap>
 #include <QTimer>
@@ -46,6 +47,38 @@ GenshinTianLiBattleClient::~GenshinTianLiBattleClient()
 {
 	delete popup;
 }
+
+void GenshinTianLiBattleClient::mousePressEvent(QMouseEvent* event)
+{
+	if (event->button() == Qt::LeftButton)
+	{
+		// ui.TitleBar
+		if (ui.TitleBar->geometry().contains(event->pos()))
+		{
+			move_press = event->globalPos();
+			move_value = this->pos();
+			is_left_clicked = true;
+		}
+	}
+	//event->ignore();
+}
+void GenshinTianLiBattleClient::mouseReleaseEvent(QMouseEvent* event)
+{
+	if (event->button() == Qt::LeftButton) {
+		is_left_clicked = false;
+	}
+	//event->ignore();
+}
+void GenshinTianLiBattleClient::mouseMoveEvent(QMouseEvent* event)
+{
+	if (is_left_clicked) {
+		move_value = event->globalPos();
+		this->move(this->pos() + move_value - move_press);
+		move_press = move_value;
+	}
+	//event->ignore();
+}
+
 void GenshinTianLiBattleClient::show_frame(QImage img)
 {
 	QPixmap map = QPixmap::fromImage(img);
