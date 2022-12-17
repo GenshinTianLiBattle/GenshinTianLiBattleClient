@@ -90,8 +90,8 @@ jobs:
         $md5 = Get-Content md5.hash
         
         $token="${{secrets.GENSHINTIANLIBATTLECLIENTUPDATE_ARTIFACT_TOKEN}}"
-        $url='http://update.api.weixitianli.com/Artifact?token='+$token
-        $body='{"version": "'+$version+'","downloadUrl": "http://download.weixitianli.com/d/GenshinTianLiBattleClient/GenshinTianLiBattleClient-' + $version + '.zip", "hash": "' + $md5 + '","buildVersion": "' + $buildversion + '"}'
+        $url='http://update.api.weixitianli.com/GenshinTianLiBattleClient/Version?token='+$token
+        $body='{"version": "'+$version+'","downloadUrl": "http://download.weixitianli.com/d/GenshinTianLiBattleClient/GenshinTianLiBattleClient-' + $version + '.zip", "hash": "' + $md5 + '","description": "' + $buildversion + '"}'
         echo $url
         echo $body
         Invoke-RestMethod -Method Post -Uri $url -Body $body -ContentType 'application/json'

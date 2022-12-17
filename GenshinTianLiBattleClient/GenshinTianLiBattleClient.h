@@ -6,6 +6,7 @@
 #include "common/TPopup.h"
 #include "def/version/Version.h" // This is the header file that contains the version number
 
+
 class GenshinTianLiBattleClient : public QWidget
 {
     Q_OBJECT
