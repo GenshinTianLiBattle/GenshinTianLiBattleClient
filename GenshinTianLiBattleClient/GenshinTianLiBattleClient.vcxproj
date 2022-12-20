@@ -239,10 +239,12 @@
   <ItemGroup>
     <QtMoc Include="CoreManager.h" />
     <QtMoc Include="common\TPopup.h" />
+    <ClInclude Include="..\GenshinTianLiBattleClient.Core\resource.h" />
     <ClInclude Include="def\version\Version.h" />
     <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
+    <ResourceCompile Include="..\GenshinTianLiBattleClient.Core\resource\resource_model.rc" />
     <ResourceCompile Include="GenshinTianLiBattleClient.rc" />
     <ResourceCompile Include="GenshinTianLiBattleClientIcon.rc" />
   </ItemGroup>

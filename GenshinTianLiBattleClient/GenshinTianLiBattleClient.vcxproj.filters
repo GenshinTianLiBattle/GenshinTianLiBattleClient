@@ -45,6 +45,7 @@
     <ClInclude Include="resource.h">
       <Filter>资源</Filter>
     </ClInclude>
+    <ClInclude Include="..\GenshinTianLiBattleClient.Core\resource.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="GenshinTianLiBattleClientIcon.rc">
@@ -53,6 +54,7 @@
     <ResourceCompile Include="GenshinTianLiBattleClient.rc">
       <Filter>资源</Filter>
     </ResourceCompile>
+    <ResourceCompile Include="..\GenshinTianLiBattleClient.Core\resource\resource_model.rc" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="resource\icon\Icon.ico">
