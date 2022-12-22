@@ -27,7 +27,6 @@ CoreManager::CoreManager(QObject *parent)
 	connect(tick_timer, &QTimer::timeout, this, &CoreManager::OnTick);
 	checkVersionServer();
 
-
 }
 
 CoreManager::~CoreManager()
@@ -82,6 +81,7 @@ void CoreManager::OnTick()
 		emit genshin_exist_changed(genshin_is_exist);
 	}
 
+
 	RECT rect;
 	GetWindowRect(genshin_handle, &rect);
 	int width = rect.right - rect.left;
@@ -93,7 +93,6 @@ void CoreManager::OnTick()
 	BitBlt(hCaptureDC, 0, 0, width, height, hWindowDC, 0, 0, SRCCOPY | CAPTUREBLT);
 	BITMAP bmp{};
 	GetObject(hCaptureBitmap, sizeof(BITMAP), &bmp);
-	auto map = QtWin::fromHBITMAP(hCaptureBitmap, QtWin::HBitmapAlpha);
 	cv::Mat mat;
 	mat.create(bmp.bmHeight, bmp.bmWidth, CV_8UC4);
 	GetBitmapBits(hCaptureBitmap, bmp.bmWidthBytes * bmp.bmHeight, mat.data);
@@ -102,6 +101,32 @@ void CoreManager::OnTick()
 	ReleaseDC(genshin_handle, hWindowDC);
 	std::vector<cv::Mat> split;
 	cv::split(mat, split);
+
+	//cv::imshow("alpha", split[3]);
+
+
+	auto roi= cv::Rect(960,540,500,500);
+	cv::Mat roi_mat = mat(roi);
+	//cv::imshow("roi", roi_mat);
+
+	//cv::threshold(roi_mat, roi_mat, 200, 255, cv::THRESH_BINARY);
+	//auto contours = std::vector<std::vector<cv::Point>>();
+	//auto hierarchy = std::vector<cv::Vec4i>();
+	//cv::findContours(roi_mat, contours, hierarchy, cv::RETR_EXTERNAL, cv::CHAIN_APPROX_SIMPLE);
+	//cv::Mat mat_contours = cv::Mat::zeros(roi_mat.size(), CV_8UC3);
+	//for (int i = 0; i < contours.size(); i++)
+	//{
+	//	cv::Scalar color = cv::Scalar(0, 0, 255);
+	//	cv::drawContours(mat_contours, contours, i, color, 2, 8, hierarchy, 0, cv::Point());
+	//}
+	//cv::imshow("contours", mat_contours);
+	
+	{
+		auto roi = cv::Rect(260, 18, 130, 40);
+		cv::Mat roi_mat2 = roi_mat(roi);
+		cv::imshow("roi2", roi_mat2);
+		qDebug() << tl::battle::ocr::ocr(&roi_mat2);
+	}
 
 	//writer << mat;
 	//writer_alpha << split[3];
@@ -112,22 +137,8 @@ void CoreManager::OnTick()
 	emit next_frame(image);
 }
 
-QString CoreManager::get_token()
-{
-	auto token =api::login("user", "user");
-	if (token != nullptr)
-	{
-		qDebug() << "token: " << token;
-		//core->free_str(token);
-	}
-	return QString(token);
-}
-
 void CoreManager::OnTick_2nd()
 {
-	tick_auto tc;
-	qDebug() << "tick:" << tc;
-
 	if (genshin_handle == nullptr)
 	{
 		genshin_handle = FindWindowA("UnityWndClass", "Ô­Éñ");
@@ -147,28 +158,27 @@ void CoreManager::OnTick_2nd()
 		genshin_is_exist = true;
 		emit genshin_exist_changed(genshin_is_exist);
 	}
-	
 
-	RECT rect;
-	GetWindowRect(genshin_handle, &rect);
-	int width = rect.right - rect.left;
-	int height = rect.bottom - rect.top;
-	HDC hWindowDC = GetDC(genshin_handle);
-	HDC hCaptureDC = CreateCompatibleDC(hWindowDC);
-	HBITMAP hCaptureBitmap = CreateCompatibleBitmap(hWindowDC, width, height);
-	SelectObject(hCaptureDC, hCaptureBitmap);
-	BitBlt(hCaptureDC, 0, 0, width, height, hWindowDC, 0, 0, SRCCOPY | CAPTUREBLT);
-	
-	auto map = QtWin::fromHBITMAP(hCaptureBitmap, QtWin::HBitmapAlpha);
-	DeleteObject(hCaptureBitmap);
-	DeleteDC(hCaptureDC);
-	ReleaseDC(genshin_handle, hWindowDC);
-	
-	map = map.scaled(800, 450);
+	auto img = tl::battle::capture::capture(core->get_genshin());
+	cv::Mat mat;
+	cv::resize(*img, mat, cv::Size(800, 450));
+	tl::battle::capture::release_capture(img);
 
-	QImage image = map.toImage();
+	QImage image((const uchar*)(mat.data), mat.cols, mat.rows, mat.cols * (mat.channels()), QImage::Format_ARGB32);
 	emit next_frame(image);
 }
+
+QString CoreManager::get_token()
+{
+	auto token =api::login("user", "user");
+	if (token != nullptr)
+	{
+		qDebug() << "token: " << token;
+		//core->free_str(token);
+	}
+	return QString(token);
+}
+
 
 void CoreManager::set_genshin_handle(HWND handle)
 {
