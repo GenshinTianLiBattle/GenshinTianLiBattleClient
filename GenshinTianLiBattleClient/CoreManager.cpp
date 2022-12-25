@@ -52,8 +52,6 @@ public:
 };
 int tick_auto::tick_count=0;
 
-#include <QtWin> 
-
 void CoreManager::OnTick()
 {
 	//static cv::VideoWriter writer("save.mp4", 0, 30, cv::Size(1920, 1080));
